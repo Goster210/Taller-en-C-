@@ -19,9 +19,7 @@ void calBisiesto() {
     do  {
         printf("\nDijite el año que desea saber si es bisiesto o no ", year);
         scanf("%d", &year);
-        if (year % 4 == 0 && year % 100 != 0) {
-            printf("El año %d es bisiesto", year);
-        } else if (year % 400 == 0) {
+        if ((year % 4 == 0 && year % 100 != 0)||year%400==0) {
             printf("El año %d es bisiesto", year);
         } else {
             printf("El año %d no es bisiesto", year);
