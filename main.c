@@ -35,7 +35,8 @@ void mainMenu(){
     char *mainMenu = "<<<<MENU PRINCIPAL>>>>\n\n"
 	"1. Serie de Fibonnaci\n"
     "2. Maximo Comun Divisor\n"
-    "3. Numeros Primos\n\n"
+    "3. Numeros Primos\n"
+    "7. Año bisiesto\n\n"
     "Digite Opcion ([s/S]-Salir).... ";
     do{
         printf( mainMenu );
