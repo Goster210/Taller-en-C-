@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define MAX 20
 
 //---- SECUENCIA FIBONACCI ---- ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 void calcFibonacci(){
@@ -73,13 +74,85 @@ int validate (int number1,int number2,int calculatenumber1,int calculatenumber2)
 	}
 }
 //---- SI EL NUMERO ES CAPICUA ---- ///////////////////////////////////////////////////////////////////////////////////////////////////////
-void numberCapicua(){
-   
-    getchar();
+int capicua(int num){
+    int investNum = 0;
+    while(num >= 1){
+        int aux = num%10;
+        investNum = (investNum*10)+aux;
+        num/=10;
+    }
+    return investNum;
+}
+void capicuaNumber(){
+    int num;   
+    char option;
+    printf( "\n----------->  Numero Capicua \n"
+            "Ingrese el numero: " );
+    scanf("%d",&num);
+    if(num == (capicua(num)) ){
+        printf("El numero %d SI es Capicua\n",num);
+    }else{
+        printf("El numero %d NO es Capicua\n",num);
+    }
+     printf( "----------->  Eliga (S/s) para Cerrar el Programa ó cualquier letra para volver al menú: ");
+    scanf("%s",&option);
+
+    if(toupper(option) == 'S'){
+        exit(-1);
+    }else{
+        printf("\n");
+        getchar();
+    }
 }
 //---- SI LA PALABRA ES PALINDROMO ---- ///////////////////////////////////////////////////////////////////////////////////////////////////
-void palindromo(){
-    getchar();
+int investPalindrome(char word[MAX],int size){
+    char aux,wordCopy[MAX];
+    int pos_Ini,pos_End;
+
+    for(int x=0; x<size; x++){
+        wordCopy[x]=word[x];
+    }   
+    pos_Ini=0;
+    pos_End=size-1;
+    
+    while(pos_Ini<pos_End){
+        aux=word[pos_Ini];
+        word[pos_Ini]=word[pos_End];
+        word[pos_End]=aux;
+        pos_Ini++; 
+        pos_End--;
+    }
+    if(strcmp(wordCopy,word) == 0){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+#define MAX 20
+void palindrome(){
+    
+    char word[MAX]; 
+    char option;    
+
+    printf( "\n----------->  Palindromo \n"
+            "Escriba su cadena texto: " );
+    scanf("%s", &word);
+    int size = strlen(word);
+    
+   if(investPalindrome(word,size) == 1){
+        printf("La Cadena %s es Palindrome\n",word);
+    }else{
+        printf("La Cadena %s No es Palindrome\n",word);
+    }
+    printf( "----------->  Eliga (S/s) para Cerrar el Programa ó cualquier letra para volver al menú: ");
+    scanf("%s",&option);
+
+    if(toupper(option) == 'S'){
+        exit(-1);
+    }else{
+        printf("\n");
+        getchar();
+    }
 }
 //---- AÑO BISIESTO ---- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void calBisiesto() {
@@ -126,10 +199,10 @@ void mainMenu(){
             case '4': friendsNumbers();
             break;
             
-            case '5': numberCapicua;
+            case '5' : capicuaNumber();
             break;
             
-            case '6': palindromo();
+            case '6' : palindrome();
             break;
 			
 	        case '7': calBisiesto();
