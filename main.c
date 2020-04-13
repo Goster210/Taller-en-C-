@@ -128,7 +128,6 @@ int investPalindrome(char word[MAX],int size){
         return 0;
     }
 }
-#define MAX 20
 void palindrome(){
     
     char word[MAX]; 
